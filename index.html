@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <meta charset="UTF-8">
     <!--Font Awesome-->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -13,7 +14,7 @@
 <body>
     <div id="content">
         
-        <div id = "quotes"></div>
+        <div id="quotes"></div>
         
         <div class= "buttons"> 
         <div id= "quote_button">
@@ -25,44 +26,20 @@
     
     <script>
         
-        var httpRequest;
-    //when button is clicked, perform ajax request
+        var quotesArray = ["Fate only takes you so far. The rest is up to you.", "And remember, no matter where you go, there you are.","Don't be with someone you can live with be with someone you can't live without.","Don't cry because it's over smile because it happened.", "Failure to prepare is preparing to fail.", "No good plan survives contact with the enemy.", "Doubt vs. Faith Doubt sees the obstacles. Faith sees the way. Doubt sees the darkest night. Faith sees the day. Doubt dreads to take a step. Faith soars on high. Doubt questions,'Who believes' Faith answers,'I'.", "Everyone wants to be accepted by a world that is unacceptable", "Yesterday's failures are today's seeds That must be diligently planted to be able to abundantly harvest Tomorrow's success.", "Between the wish and the thing life lies waiting.", "Courage is an everyday thing. When we look reality squarely in the eye and refuse to back away from our awareness, we are living courage.", "The difficulties we experience Always illuminate the lessons we need most.", "Don't deny hope it's chance to work magic"];
+        
     document.getElementById("quote_button").addEventListener("click",function()
                                                              {
-        makeRequest();
+     getRandomQuote();
         
     }, false);
         
-        function makeReqest(url)
+        function getRandomQuote()
         {
-            httpRequest = new XMLHttpRequest();
-            
-            if(!httpRequest)
-            {
-                console.log("Cannot create a request, please try again");
-                return false;
-            }
-            
-            httpRequest.onreadystatechange = alertContents;
-            httpRequest.open("GET", url);
-            httpRequest.send();
-        }
-        
-        function alertContents()
-        {
-            if(httpRequest === XMLHttpRequest.DONE)
-            {
-                if(httpRequest.status === 200)
-                {
-                    //send data to quote area here, but for now...
-                    console.log(httpRequest.responseText);
-                }
-                
-                else
-                {
-                    console.log("There was an error, please try again");
-                }
-            }
+            var num = Math.floor(Math.random() * quotesArray.length);
+            console.log(num);
+           
+            var quoteArea = document.getElementById("quotes").innerText = quotesArray[num];
         }
 
     </script>
