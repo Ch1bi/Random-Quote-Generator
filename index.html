@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--Font Awesome-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" type="text/css" href="style.css">
+    
+<title>Random Quote Generator</title>
+</head>
+    
+<body>
+    <div id="content">
+        
+        <div id = "quotes"></div>
+        
+        <div class= "buttons"> 
+        <div id= "quote_button">
+        <button>New Quote</button>
+        </div>
+        </div>
+        
+    </div>
+    
+    <script>
+        
+        var httpRequest;
+    //when button is clicked, perform ajax request
+    document.getElementById("quote_button").addEventListener("click",function()
+                                                             {
+        makeRequest();
+        
+    }, false);
+        
+        function makeReqest(url)
+        {
+            httpRequest = new XMLHttpRequest();
+            
+            if(!httpRequest)
+            {
+                console.log("Cannot create a request, please try again");
+                return false;
+            }
+            
+            httpRequest.onreadystatechange = alertContents;
+            httpRequest.open("GET", url);
+            httpRequest.send();
+        }
+        
+        function alertContents()
+        {
+            if(httpRequest === XMLHttpRequest.DONE)
+            {
+                if(httpRequest.status === 200)
+                {
+                    //send data to quote area here, but for now...
+                    console.log(httpRequest.responseText);
+                }
+                
+                else
+                {
+                    console.log("There was an error, please try again");
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>
