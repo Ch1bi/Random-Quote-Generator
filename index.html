@@ -5,28 +5,32 @@
     <meta charset="UTF-8">
     <!--Font Awesome-->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <!--Google Fonts-->
+ <style>
+@import url('https://fonts.googleapis.com/css?family=Taviraj');
+</style> 
 <link rel="stylesheet" type="text/css" href="style.css">
     
 <title>Random Quote Generator</title>
 </head>
     
 <body>
-    <div id="content">
-        
+    <div id="container">
         <div id="quotes"></div>
         
-        <div class= "buttons"> 
         <div id= "quote_button">
-        <button>New Quote</button>
-        </div>
+        <button class="buttons">New Quote</button>
+            
+       <a class="twitter-share-button" id="tweet" href="https://twitter.com/intent/tweet?text=" data-size="large" target="_blank"> <i class="fa fa-twitter-square twitter fa-3x" aria-hidden="true"></i></a>
         </div>
         
-    </div>
+    
+    
+     
     
     <script>
-        
-        var quotesArray = ["Fate only takes you so far. The rest is up to you.", "And remember, no matter where you go, there you are.","Don't be with someone you can live with be with someone you can't live without.","Don't cry because it's over smile because it happened.", "Failure to prepare is preparing to fail.", "No good plan survives contact with the enemy.", "Doubt vs. Faith Doubt sees the obstacles. Faith sees the way. Doubt sees the darkest night. Faith sees the day. Doubt dreads to take a step. Faith soars on high. Doubt questions,'Who believes' Faith answers,'I'.", "Everyone wants to be accepted by a world that is unacceptable", "Yesterday's failures are today's seeds That must be diligently planted to be able to abundantly harvest Tomorrow's success.", "Between the wish and the thing life lies waiting.", "Courage is an everyday thing. When we look reality squarely in the eye and refuse to back away from our awareness, we are living courage.", "The difficulties we experience Always illuminate the lessons we need most.", "Don't deny hope it's chance to work magic"];
+        var tweetButton;
+        var quotesArray = ["Fate only takes you so far. The rest is up to you.", "And remember, no matter where you go, there you are.","Don't be with someone you can live with be with someone you can't live without.","Don't cry because it's over smile because it happened.", "Failure to prepare is preparing to fail.", "No good plan survives contact with the enemy.", "Everyone wants to be accepted by a world that is unacceptable", "Yesterday's failures are today's seeds That must be diligently planted to be able to abundantly harvest Tomorrow's success.", "Between the wish and the thing life lies waiting.", "Courage is an everyday thing. When we look reality squarely in the eye and refuse to back away from our awareness, we are living courage.", "The difficulties we experience Always illuminate the lessons we need most.", "Don't deny hope it's chance to work magic"];
         
     document.getElementById("quote_button").addEventListener("click",function()
                                                              {
@@ -34,13 +38,24 @@
         
     }, false);
         
+        tweetButton = document.getElementById("tweet").addEventListener("click", function()
+                                                          {
+        var grabHref = tweetButton.getAttribute("href");
+          console.log(grabHref);
+            grabHref + quotesArray[num];
+            
+            
+        },false);
+        
         function getRandomQuote()
         {
             var num = Math.floor(Math.random() * quotesArray.length);
-            console.log(num);
+            //console.log(num);
            
             var quoteArea = document.getElementById("quotes").innerText = quotesArray[num];
         }
+        
+       
 
     </script>
 </body>
