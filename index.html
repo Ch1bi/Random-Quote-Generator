@@ -29,15 +29,18 @@
      
     
     <script>
-        var quote = getRandomQuote();
         var quotesArray = ["Fate only takes you so far. The rest is up to you.", "And remember, no matter where you go, there you are.","Don't be with someone you can live with be with someone you can't live without.","Don't cry because it's over smile because it happened.", "Failure to prepare is preparing to fail.", "No good plan survives contact with the enemy.", "Everyone wants to be accepted by a world that is unacceptable", "Yesterday's failures are today's seeds That must be diligently planted to be able to abundantly harvest Tomorrow's success.", "Between the wish and the thing life lies waiting.", "Courage is an everyday thing. When we look reality squarely in the eye and refuse to back away from our awareness, we are living courage.", "The difficulties we experience Always illuminate the lessons we need most.", "Don't deny hope it's chance to work magic"];
         
+        
+        
+        //click function for new quote button  
     document.getElementById("quote_button").addEventListener("click",function()
                                                              {
      getRandomQuote();
         
     }, false);
         
+        //click funtion for tweet quote button function
        var getTweetButton = document.getElementById("tweet").addEventListener("click", function()
                                                           {
             tweetQuote();
@@ -55,10 +58,12 @@
         
        function tweetQuote()
         {
-            var appendHref = document.getElementById("tweet").getAttribute("href").
-            setAttribute("href", "https://twitter.com/intent/tweet?text=");
-        
+            var twitterText = document.getElementById("quotes").innerText;
+            console.log(twitterText);
+            
+            var appendHref = document.getElementById("tweet"). setAttribute("href", "https://twitter.com/intent/tweet?text= " + twitterText);
             console.log(appendHref);
+            
         }
        
     </script>
